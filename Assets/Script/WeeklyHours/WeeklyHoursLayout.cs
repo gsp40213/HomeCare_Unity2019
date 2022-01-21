@@ -177,7 +177,7 @@ public class WeeklyHoursLayout : MonoBehaviour
         try
         {
             Vector2 sizeDelta = (CalculateOnClick.RESULT_MESSAGE.Length == 0) ? new Vector2(0, 0) :
-                new Vector2(0, Screen.height / 2 * 0.65f);
+                new Vector2(0, Screen.height / 2 * 0.7f);
             resultMessage_Maessage.GetComponent<RectTransform>().sizeDelta = sizeDelta;
 
             resultMessage.setMessage("結果" + CalculateOnClick.RESULT_MESSAGE);
