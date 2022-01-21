@@ -137,6 +137,11 @@ public class WeeklyHoursLayout : MonoBehaviour
 
     public Font textFont;
 
+    ~WeeklyHoursLayout()
+    {
+        CalculateOnClick.RESULT_MESSAGE = "";
+    }
+
     private void Start()
     {
         // 背景
