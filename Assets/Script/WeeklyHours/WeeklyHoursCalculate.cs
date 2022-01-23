@@ -95,7 +95,6 @@ public class WeeklyHoursCalculate
     // 小時
     int hourCalculate(int hour, int cycle, int HOLIDAY)
     {
-
         return (hour * (cycle - HOLIDAY));
     }
 

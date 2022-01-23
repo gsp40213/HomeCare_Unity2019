@@ -67,7 +67,7 @@ public class TimeConversionInterface
         hourInput.transform.parent = hourManage.transform;
 
         hourSetting = new InterfaceSetting(hour, hourInput, font);
-        hourSetting.dateWeekfunction("小時", pointY);
+        hourSetting.dateWeekfunction("小時", pointY, Color.red);
 
         minuteMangeSetting = new AreaSetting(minuteMange, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             new Vector2(0.5f, 0.5f));
@@ -78,7 +78,7 @@ public class TimeConversionInterface
         minuteInput.transform.parent = minuteMange.transform;
 
         minuteSetting = new InterfaceSetting(minute, minuteInput, font);
-        minuteSetting.dateWeekfunction("分鐘", pointY - 0.27f);
+        minuteSetting.dateWeekfunction("分鐘", pointY - 0.27f, Color.red);
     }
 
     public int getHourValue()

@@ -55,7 +55,7 @@ public class TimeConversionLayout : MonoBehaviour
 
 
         result = new TextSetting(result_Text, 1f, 0.6f, 1.42f, 0.1f);
-        result.function(textFont, FontStyle.Normal, "結果", TextAnchor.MiddleLeft, Color.red, 7);
+        result.function(textFont, FontStyle.Normal, "結果", TextAnchor.MiddleLeft, Color.green, 7);
 
         systemMessage = new TextSetting(systemMessage_Text, 0.78f, 1.87f, 1.2f, 0.13f);
         systemMessage.function(textFont, FontStyle.Normal, "時間換算", TextAnchor.MiddleLeft, Color.red, 7);
@@ -68,7 +68,7 @@ public class TimeConversionLayout : MonoBehaviour
     {
         try
         {
-            result.function(textFont, FontStyle.Normal, TimeConversionCalculation.RESULT(), TextAnchor.MiddleLeft, Color.red, 7);
+            result.function(textFont, FontStyle.Normal, TimeConversionCalculation.RESULT(), TextAnchor.MiddleLeft, Color.green, 7);
         }
         catch { }
     }

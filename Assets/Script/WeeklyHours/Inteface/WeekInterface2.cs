@@ -121,10 +121,10 @@ public class WeekInterface
         systemSetting.function(font, FontStyle.Normal, systemMessage, TextAnchor.MiddleLeft, Color.green, 7);
 
         yearSetting = new InterfaceSetting(yearText, yearInput, font);
-        yearSetting.systemAndYear("年", pointX + 0.88f);
+        yearSetting.systemAndYear("年", pointX + 0.88f, Color.red);
 
         monthSetting = new InterfaceSetting(monthText, monthInput, font);
-        monthSetting.systemAndYear("月", pointX + 1.4f);
+        monthSetting.systemAndYear("月", pointX + 1.4f, Color.red);
     }
 
     public int getYearValue() 
@@ -161,19 +161,19 @@ public class WeekInterface
 
         // 小時
         hourSetting = new InterfaceSetting(hourText, hourInput, font);
-        hourSetting.dateWeekfunction("小時", pointY - 0.12f);
+        hourSetting.dateWeekfunction("小時", pointY - 0.12f, Color.red);
 
         // 分鐘
         minuteSetting = new InterfaceSetting(minuteText, minuteInput, font);
-        minuteSetting.dateWeekfunction("分鐘", pointY - 0.25f);
+        minuteSetting.dateWeekfunction("分鐘", pointY - 0.25f, Color.red);
 
         // 週次
         cycleSetting = new InterfaceSetting(cycleText, cycleInput, font);
-        cycleSetting.dateWeekfunction("週次", pointY - 0.38f);
+        cycleSetting.dateWeekfunction("週次", pointY - 0.38f, Color.red);
 
         // 請假次數
         holidaySetting = new InterfaceSetting(holidayText, holidayInput, font);
-        holidaySetting.funtcionHoliday("請假次數", pointY - 0.51f);
+        holidaySetting.funtcionHoliday("請假次數", pointY - 0.51f, Color.red);
     }
 
     // 加班介面
@@ -188,11 +188,11 @@ public class WeekInterface
 
         // 小時
         hourSetting = new InterfaceSetting(hourText, hourInput, font);
-        hourSetting.dateWeekfunction("小時", pointY - 0.12f);
+        hourSetting.dateWeekfunction("小時", pointY - 0.12f, Color.red);
 
         // 分鐘
         minuteSetting = new InterfaceSetting(minuteText, minuteInput, font);
-        minuteSetting.dateWeekfunction("分鐘", pointY - 0.25f);
+        minuteSetting.dateWeekfunction("分鐘", pointY - 0.25f, Color.red);
     }
 
     public int getHourValue()

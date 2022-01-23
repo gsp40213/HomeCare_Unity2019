@@ -16,8 +16,8 @@ public abstract class InterfaceObj
         this.font = font;
     }
 
-    public abstract void dateWeekfunction(string textMessage, float pointY);
-    public abstract void funtcionHoliday(string textMessage, float pointY);
+    public abstract void dateWeekfunction(string textMessage, float pointY, Color color);
+    public abstract void funtcionHoliday(string textMessage, float pointY, Color color);
 
-    public abstract void systemAndYear(string textMessage, float pointX);
+    public abstract void systemAndYear(string textMessage, float pointX, Color color);
 }
