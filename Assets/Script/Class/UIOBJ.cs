@@ -135,3 +135,23 @@ public interface OnClick
 {
     void onClick();
 }
+
+public interface CalculatoOnClck 
+{
+    void oneClick();
+    void twoClick();
+    void threeClick();
+    void addClick();
+    void fourClick();
+    void fiveClick();
+    void sixClick();
+    void reduceClick();   
+    void sevenClick();
+    void eightClick();
+    void nineClick();
+    void takeClick();
+    void zeroClick();
+    void chearClick();
+    void equalClick();
+    void removeClick();
+}
