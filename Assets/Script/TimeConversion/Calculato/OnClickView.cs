@@ -159,12 +159,7 @@ public class OnClickView : CalculatoOnClck
         if (CHEAR_STATUS == 2)
         {
             INPUT_NUM.Add(double.Parse(NUMBER));
-            number = INPUT_NUM.Aggregate((m, n) => m - n);
-
-            foreach(double aaa in INPUT_NUM)
-            {
-                Debug.Log(aaa);
-            }
+            number = INPUT_NUM.Aggregate((m, n) => m - n);         
         }
 
 
