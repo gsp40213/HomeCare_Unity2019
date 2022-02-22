@@ -6,7 +6,7 @@ using System;
 using UnityEngine.Events;
 public class TimeConversionInterface 
 {
-    private Text hour, minute, calculatorInputDisplayInput;
+    private Text hour, minute, calculatorProcess, calculatorResult;
     private InputField hourInput, minuteInput;
     private RectTransform hourManage, minuteMange, calculatorArea;
 
@@ -39,13 +39,14 @@ public class TimeConversionInterface
         this.instruction = instruction;
     }
   
-    TextSetting calculatorbtnSetting;
+    TextSetting calculatorProcessSetting, calculatorResultSetting;
 
-    public TimeConversionInterface(Image breakGroud, RectTransform calculatorArea, Text calculatorInputDisplayInput)
+    public TimeConversionInterface(Image breakGroud, RectTransform calculatorArea, Text calculatorProcess, Text calculatorResult)
     {
         this.breakGroud = breakGroud;
         this.calculatorArea = calculatorArea;
-        this.calculatorInputDisplayInput = calculatorInputDisplayInput;
+        this.calculatorProcess = calculatorProcess;
+        this.calculatorResult = calculatorResult;
     }
 
     private Button button1, button2, button3, button4;
@@ -84,9 +85,14 @@ public class TimeConversionInterface
         calculatorAreaSetting = new AreaSetting(calculatorArea, Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1f));
         calculatorAreaSetting.defaultFunction(new Vector2(1, Screen.height / 2 * povitY));
 
-        // 顯示介面
-        calculatorbtnSetting = new TextSetting(calculatorInputDisplayInput, 1f, 0.86f, 1.5f, 0.1f);
-        calculatorbtnSetting.function(font, FontStyle.Normal, "", TextAnchor.MiddleLeft, Color.black, 11);
+        // 顯示過程
+        calculatorProcessSetting = new TextSetting(calculatorProcess, 1f, 0.86f, 1.5f, 0.1f);
+        calculatorProcessSetting.function(font, FontStyle.Normal, "", TextAnchor.MiddleLeft, Color.black, 7);
+
+        // 顯示計算後結果
+        calculatorResultSetting = new TextSetting(calculatorResult, 1f, 0.76f, 1.5f, 0.1f);
+        calculatorResultSetting.function(font, FontStyle.Normal, "", TextAnchor.MiddleLeft, Color.black, 7);
+
     }
 
     // 背景

@@ -27,8 +27,8 @@ public class TimeConversionLayout : MonoBehaviour
     // 計算機
     public Image calculatorBreakGroud_Image;
     public RectTransform calculatorArea_RectTransform;
-    public Text canculatorInput;
-    private TextSetting calculatorbtnSetting;
+    public Text canculatorProces, canculatorResult;
+    private TextSetting canculatorProcesSetting, canculatorResultSetting;
     public Button one_Button, two_Button, three_Button, add_Button;
     public Button four_Button, five_Button, six_Button, reduce_Button;
     public Button seven_Button, eight_Butotn, nine_Button, take_Button;
@@ -69,24 +69,27 @@ public class TimeConversionLayout : MonoBehaviour
         // 計算機
         calculatorSetting = new TextSetting(calculator_Text, 0.9f, 0.76f, 1.2f, 0.1f);
         calculatorSetting.function(textFont, FontStyle.Normal, "計算機", TextAnchor.MiddleLeft, Color.red, 7);
-        calculatoLayoutSetting = new TimeConversionInterface(calculatorBreakGroud_Image, calculatorArea_RectTransform, canculatorInput);
-        calculatoLayoutSetting.calculayoutSetting(textFont, 0.38f, 11);
+        calculatoLayoutSetting = new TimeConversionInterface(calculatorBreakGroud_Image, calculatorArea_RectTransform, canculatorProces,
+            canculatorResult);
+        // 計算滑輪高度調整
+        calculatoLayoutSetting.calculayoutSetting(textFont, 0.39f, 11);
 
         // 顯示介面
-        calculatorbtnSetting = new TextSetting(canculatorInput, 0.98f, 0.7f, 1.5f, 0.2f);
+        canculatorProcesSetting = new TextSetting(canculatorProces, 0.98f, 0.7f, 1.5f, 0.2f);
+        canculatorResultSetting = new TextSetting(canculatorResult, 1f, 0.76f, 1.5f, 0.1f);
 
          // 計算機按鈕
          calculatoLayoutButtonHo1 = new TimeConversionInterface(one_Button, two_Button, three_Button, add_Button);
-        calculatoLayoutButtonHo1.calculatorHorizontalBtns(0f, textFont, "1", "2", "3", "+", 
+        calculatoLayoutButtonHo1.calculatorHorizontalBtns(-0.1f, textFont, "1", "2", "3", "+", 
             new OnClickView().oneClick, new OnClickView().twoClick, new OnClickView().threeClick, new OnClickView().addClick);
         calculatoLayoutButtonHo2 = new TimeConversionInterface(four_Button, five_Button, six_Button, reduce_Button);
-        calculatoLayoutButtonHo2.calculatorHorizontalBtns(-0.2f, textFont, "4", "5", "6", "-", 
+        calculatoLayoutButtonHo2.calculatorHorizontalBtns(-0.3f, textFont, "4", "5", "6", "-", 
             new OnClickView().fourClick, new OnClickView().fiveClick, new OnClickView().sixClick, new OnClickView().reduceClick);
         calculatoLayoutButtonHo3 = new TimeConversionInterface(seven_Button, eight_Butotn, nine_Button, take_Button);
-        calculatoLayoutButtonHo3.calculatorHorizontalBtns(-0.4f, textFont, "7", "8", "9", "×",
+        calculatoLayoutButtonHo3.calculatorHorizontalBtns(-0.5f, textFont, "7", "8", "9", "×",
             new OnClickView().sevenClick, new OnClickView().eightClick, new OnClickView().nineClick, new OnClickView().takeClick);
         calculatoLayoutButtonHo4 = new TimeConversionInterface(zero_Button, drop_Button, equal_Buttin, remove_Button);
-        calculatoLayoutButtonHo4.calculatorHorizontalBtns(-0.6f, textFont, "0", "C", "=", "÷", 
+        calculatoLayoutButtonHo4.calculatorHorizontalBtns(-0.7f, textFont, "0", "C", "=", "÷", 
             new OnClickView().zeroClick, new OnClickView().chearClick, new OnClickView().equalClick, new OnClickView().removeClick);
 
         systemMessage = new TextSetting(systemMessage_Text, 0.78f, 1.87f, 1.2f, 0.13f);
@@ -101,8 +104,9 @@ public class TimeConversionLayout : MonoBehaviour
         try
         {
             result.function(textFont, FontStyle.Normal, TimeConversionCalculation.RESULT(), TextAnchor.MiddleLeft, Color.green, 7);
-            calculatorbtnSetting.setMessage(OnClickView.RESULT_MESSAGE());
-            calculatorbtnSetting.getMessage();
+            canculatorProcesSetting.setMessage(OnClickView.RESULT_PROCESS());
+
+            canculatorResultSetting.setMessage(OnClickView.RESULT_());
         }
         catch { }
     }

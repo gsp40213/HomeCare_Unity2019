@@ -5,30 +5,34 @@ using System.Linq;
 
 public class OnClickView : CalculatoOnClck
 {
-    private static List<double> INPUT_NUM = new List<double>();
-    private static string NUMBER;
     private bool active = false;
 
-    private static string CHEAR_MESSAGE;
-    private static int CHEAR_STATUS;
-
     // 顯示計算過程
-    private static string RESUL_MESSAGE;
+    private static string PROCESS, RESULT, VALUE;
 
+    private static double A, SUM;
+    private static string CHEAR_MESSAGE;  //CHEAR_MESSAGE;
+    private static int CHEAR_STATUS;    // CHEAR_STATUS
 
     ~OnClickView()
     {
         CHEAR_STATUS = 0;
         active = false;
-        INPUT_NUM.Clear();
-        RESUL_MESSAGE = "";
-        NUMBER = "";
+        PROCESS = "";
+        RESULT = "";
+        VALUE = null;
     }
 
     // 計算過程
-    public static string RESULT_MESSAGE()
+    public static string RESULT_PROCESS()
     {
-        return RESUL_MESSAGE;
+        return "過程: " + PROCESS;
+    }
+
+    // 計算結果
+    public static string RESULT_()
+    {
+        return "結果:" + RESULT;
     }
 
     // 清除
@@ -36,9 +40,9 @@ public class OnClickView : CalculatoOnClck
     {
         CHEAR_STATUS = 0;
         active = false;
-        INPUT_NUM.Clear();
-        RESUL_MESSAGE = "";
-        NUMBER = "";
+        PROCESS = "";
+        RESULT = "";
+        VALUE = null;
     }
 
     public void eightClick()
@@ -96,53 +100,79 @@ public class OnClickView : CalculatoOnClck
     {
         if (active == true)
         {
-            RESUL_MESSAGE = "0";
+            PROCESS = "0";
             active = false;
         }
 
-        NUMBER += conNumber;
-        RESUL_MESSAGE += conNumber;
+        if (RESULT == null || RESULT == "")
+            PROCESS += conNumber;
+        else
+            PROCESS = RESULT + CHEAR_MESSAGE + conNumber;
+
+        VALUE += conNumber;
     }
 
     // 數學符號
-    void chearMessage(string chear)
+    void chear(string chear)
     {
         active = true;
-        INPUT_NUM.Add(double.Parse(NUMBER));
-        NUMBER = "0";
-   
         CHEAR_MESSAGE = chear;
 
-        if (RESUL_MESSAGE.Substring(RESUL_MESSAGE.Length) != CHEAR_MESSAGE)
-            RESUL_MESSAGE += CHEAR_MESSAGE;
+        if (PROCESS.Substring(PROCESS.Length) != CHEAR_MESSAGE)
+            PROCESS += CHEAR_MESSAGE;
     }
 
     // 加
     public void addClick()
     {
-        chearMessage("+");
+        chear("+");
         CHEAR_STATUS = 1;
+
+        if (RESULT == null || RESULT == "")
+            A = double.Parse(VALUE);
+        else
+            A = double.Parse(RESULT);
+
+        VALUE = "0";
     }
 
     // 减
     public void reduceClick()
     {
-        chearMessage("-");
+        chear("-");
         CHEAR_STATUS = 2;
+
+        if (RESULT == null || RESULT == "")
+            A = double.Parse(VALUE);
+        else A = double.Parse(RESULT);
+
+        VALUE = "0";
     }
 
     // 乘
     public void takeClick()
     {
-        chearMessage("×");
+        chear("×");
         CHEAR_STATUS = 3;
+
+        if (RESULT == null || RESULT == "")
+            A = double.Parse(VALUE);
+        else A = double.Parse(RESULT);
+
+        VALUE = "0";
     }
 
     // 除法
     public void removeClick()
     {
-        chearMessage("÷");
+        chear("÷");
         CHEAR_STATUS = 4;
+
+        if (RESULT == null || RESULT == "")
+            A = double.Parse(VALUE);
+        else A = double.Parse(RESULT);
+
+        VALUE = "0";
     }
 
     double number;
@@ -151,30 +181,17 @@ public class OnClickView : CalculatoOnClck
     public void equalClick()
     {
         if (CHEAR_STATUS == 1)
-        {
-            INPUT_NUM.Add(double.Parse(NUMBER));
-            number = INPUT_NUM.Aggregate((m, n) => m + n);    
-        }
+            SUM = A + double.Parse(VALUE);
 
         if (CHEAR_STATUS == 2)
-        {
-            INPUT_NUM.Add(double.Parse(NUMBER));
-            number = INPUT_NUM.Aggregate((m, n) => m - n);         
-        }
-
+            SUM = A - double.Parse(VALUE);
 
         if (CHEAR_STATUS == 3)
-        {
-            INPUT_NUM.Add(double.Parse(NUMBER));
-            number = INPUT_NUM.Aggregate((m, n) => m * n);
-        }
+            SUM = A * double.Parse(VALUE);
 
         if (CHEAR_STATUS == 4)
-        {
-            INPUT_NUM.Add(double.Parse(NUMBER));
-            number = INPUT_NUM.Aggregate((m, n) => m / n);
-        }
+            SUM = A / double.Parse(VALUE);
 
-        RESUL_MESSAGE = number.ToString();     
+        RESULT = SUM.ToString();
     }
 }
