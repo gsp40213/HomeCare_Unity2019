@@ -8,7 +8,7 @@ public class OnClickView : CalculatoOnClck
     private bool active = false;
 
     // 顯示計算過程
-    private static string PROCESS, RESULT, VALUE;
+    private static string PROCESS, RESULT, VALUE, PROCESS_NUMBER;
 
     private static double A, SUM;
     private static string CHEAR_MESSAGE;  //CHEAR_MESSAGE;
@@ -21,6 +21,7 @@ public class OnClickView : CalculatoOnClck
         PROCESS = "";
         RESULT = "";
         VALUE = null;
+        PROCESS_NUMBER = "";
     }
 
     // 計算過程
@@ -43,6 +44,7 @@ public class OnClickView : CalculatoOnClck
         PROCESS = "";
         RESULT = "";
         VALUE = null;
+        PROCESS_NUMBER = "";
     }
 
     public void eightClick()
@@ -98,6 +100,8 @@ public class OnClickView : CalculatoOnClck
     // 數字訊息
     void numberMessage(double conNumber)
     {
+       
+
         if (active == true)
         {
             PROCESS = "0";
@@ -107,7 +111,10 @@ public class OnClickView : CalculatoOnClck
         if (RESULT == null || RESULT == "")
             PROCESS += conNumber;
         else
-            PROCESS = RESULT + CHEAR_MESSAGE + conNumber;
+        {
+            PROCESS_NUMBER += conNumber;
+            PROCESS = RESULT + CHEAR_MESSAGE + PROCESS_NUMBER;
+        }
 
         VALUE += conNumber;
     }
@@ -118,8 +125,8 @@ public class OnClickView : CalculatoOnClck
         active = true;
         CHEAR_MESSAGE = chear;
 
-        if (PROCESS.Substring(PROCESS.Length) != CHEAR_MESSAGE)
-            PROCESS += CHEAR_MESSAGE;
+        if (PROCESS.Substring(PROCESS.Length - 1) != CHEAR_MESSAGE) 
+            PROCESS += CHEAR_MESSAGE;        
     }
 
     // 加
@@ -174,8 +181,6 @@ public class OnClickView : CalculatoOnClck
 
         VALUE = "0";
     }
-
-    double number;
 
     // 等於
     public void equalClick()
