@@ -5,40 +5,35 @@ using UnityEngine.UI;
 
 public class ToggleSetting : UIOBJ.Toggle_Setting
 {
-    public ToggleSetting(Toggle toggle, Sprite breakGroud, float pointX, float pointY) :
-        base(toggle, breakGroud, pointX, pointY)
-    { }
-
-    public override Toggle function(Font font, FontStyle fontStyle, string message, TextAnchor textAnchor, Color color, int textSize)
+    public ToggleSetting(Toggle toggle, Sprite breakGroud, Sprite checkmark, float pointX, float pointY) :
+        base(toggle, breakGroud, checkmark, pointX, pointY)
     {
         toggle.transform.position = new Vector2(Screen.width / 2 * pointX, Screen.width / 2 * pointY);
-        breakGroud();
-        text(font, fontStyle, message, textAnchor, color, textSize);
-
-        return toggle;
     }
 
-    public void setBool(bool active)
+    public override void breakGroud_ImageType(Color color, bool rayTarget, bool maskable, Image.Type type, int childNum)
     {
-        toggle.isOn = active;
+        Image breakGroud = toggle.transform.GetChild(childNum).GetComponent<Image>();
+        breakGroud.sprite = base.breakGroud;
+        breakGroud.color = color;
+        breakGroud.raycastTarget = rayTarget;
+        breakGroud.maskable = maskable;
+        breakGroud.type = type;
     }
 
-    public bool getBool()
+    public override void checkmark_ImageType(Color color, bool rayTarget, bool maskable, Image.Type type, Transform breakGroud_transform, int childNum)
     {
-        return toggle.isOn;
+        Image checkmark = breakGroud_transform.GetChild(childNum).GetComponent<Image>();
+        checkmark.sprite = base.checkmark;
+        checkmark.color = color;
+        checkmark.raycastTarget = rayTarget;
+        checkmark.maskable = maskable;
+        checkmark.type = type;
     }
 
-    private Image breakGroud()
+    public override void textStyle(Font font, FontStyle fontStyle, string message, TextAnchor textAnchor, Color color, int textSize, int childNum)
     {
-        Image image = toggle.transform.GetChild(0).GetComponent<Image>();
-        image.sprite = breakGourd;
-
-        return image;
-    }
-
-    private Text text(Font font, FontStyle fontStyle, string message, TextAnchor textAnchor, Color color, int textSize)
-    {
-        Text text = toggle.transform.GetChild(1).GetComponent<Text>();
+        Text text = toggle.transform.GetChild(childNum).GetComponent<Text>();
 
         text.font = font;
         text.fontStyle = fontStyle;
@@ -46,7 +41,5 @@ public class ToggleSetting : UIOBJ.Toggle_Setting
         text.alignment = textAnchor;
         text.color = color;
         text.fontSize = Screen.width / 2 / textSize;
-
-        return text;
     }
 }

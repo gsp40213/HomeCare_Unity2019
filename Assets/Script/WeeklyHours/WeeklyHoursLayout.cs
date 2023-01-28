@@ -154,12 +154,12 @@ public class WeeklyHoursLayout : MonoBehaviour
 
         // 結果區域背景
         resultBreakGroud = new ImageSetting(resultBreakGroud_Image, 1, 0.34f, 1.59f, 0.27f);
-        resultBreakGroud.function(null, false, true, resultMessage_Maessage.rectTransform);
+        resultBreakGroud.scrollRectImage(null, false, true, resultMessage_Maessage.rectTransform);
         resultMessage_Maessage.transform.parent = resultBreakGroud_Image.transform;
 
         // 顯示結果
-        resultMessage = new TextSetting(resultMessage_Maessage, 0, 0, 0, 0);
-        resultMessage.function(7, "", Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1f));
+        resultMessage = new TextSetting(resultMessage_Maessage, 0, 0, 0, 0, "", 7);
+        resultMessage.areaText(Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1f));
 
         // 系統訊息
         SYSTEM_YEAR = new WeekInterface(systemMessage_Text, year_Text, yearInput_InputField, month_Text, monthInput_InputField);
@@ -167,9 +167,9 @@ public class WeeklyHoursLayout : MonoBehaviour
 
         // 按鈕
         returnBtn = new ButtonSetting(return_Button, 1.5f, 0.1f, 0.6f, 0.15f, new ReturnOnClick().onClick);
-        returnBtn.function(textFont, FontStyle.Normal, "上一頁", TextAnchor.MiddleCenter, Color.black, 7);
+        returnBtn.textStype(textFont, FontStyle.Normal, "上一頁", TextAnchor.MiddleCenter, Color.black, 7, 0);
         calculateBtn = new ButtonSetting(calculate_Button, 0.5f, 0.1f, 0.6f, 0.15f, new CalculateOnClick().onClick);
-        calculateBtn.function(textFont, FontStyle.Normal, "計算", TextAnchor.MiddleCenter, Color.black, 7);
+        calculateBtn.textStype(textFont, FontStyle.Normal, "計算", TextAnchor.MiddleCenter, Color.black, 7, 0);
     }
 
     private void FixedUpdate()
@@ -200,43 +200,43 @@ public class WeeklyHoursLayout : MonoBehaviour
 
         MONDAY = new WeekInterface(mondayManage_RectTransform, mondayMessage_Text, mHour_Text, mHourInput_InputField,
             mMinute_Text, mMinuteInput_InputField, mCycle_Text, mCycleInput_InputField, mHoliday_Text, mHolidayInput_InputField);
-        MONDAY.week_Layout(textFont, 1.2f, "週一");
+        MONDAY.week_Layout(textFont, 0.8f, "週一");
         mCycleInput_InputField.enabled = false;
 
         TUESDAY = new WeekInterface(tuesdayManage_RectTransform, tuesdayMessage_Text, tHour_Text, tHourInput_InputField, tMinute_Text,
             tMinuteInput_InputField, tCycle_Text, tCycleInput_InputField, tHoliday_Text, tHolidayInput_InputField);
-        TUESDAY.week_Layout(textFont, 0.56f, "週二");
+        TUESDAY.week_Layout(textFont, 0.16f, "週二");
         tCycleInput_InputField.enabled = false;
 
         WENDESDAY = new WeekInterface(wednesdayManage_RectTransform, wednesdayMessage_Text, wHour_Text, wHourInput_InputField,
             wMinute_Text, wMinuteInput_InputField, wCycle_Text, wCycleInput_InputField, wHoliday_Text, wHolidayInput_InputField);
-        WENDESDAY.week_Layout(textFont, -0.08f, "週三");
+        WENDESDAY.week_Layout(textFont, -0.48f, "週三");
         wCycleInput_InputField.enabled = false;
 
         THURSDAY = new WeekInterface(thursdayManage_RectTransform, thursdayMessage_Text, thHour_Text, thHourInput_InputField,
             thMinute_Text, thMinuteInput_InputField, thCycle_Text, thCycleInput_InputField, thHoliday_Text, thHolidayInput_InputField);
-        THURSDAY.week_Layout(textFont, -0.72f, "週四");
+        THURSDAY.week_Layout(textFont, -1.12f, "週四");
         tCycleInput_InputField.enabled = false;
 
         FRIDAY = new WeekInterface(fridayManage_RectTransform, fridayMessage_Text, fHour_Text, fHoutInput_InputField, fMinute_Text,
             fMinuteInput_InputField, fCycle_Text, fCycleInput_InputField, fHoliday_Text, fHolidayInput_InputField);
-        FRIDAY.week_Layout(textFont, -1.36f, "週五");
+        FRIDAY.week_Layout(textFont, -1.76f, "週五");
         fCycleInput_InputField.enabled = false;
 
         SATURDAY = new WeekInterface(saturdayManage_RectTransform, saturdayMessage_Text, sHour_Text, sHourInput_InputField,
             sMinute_Text, sMinuteInput_InputField, sCycle_Text, sCycleInput_InputField, sHoliday_Text, sHolidayInput_InputField);
-        SATURDAY.week_Layout(textFont, -2f, "週六");
+        SATURDAY.week_Layout(textFont, -2.4f, "週六");
         sCycleInput_InputField.enabled = false;
 
         SUNDAY = new WeekInterface(sundayManage_RectTransform, sundayMessage_Text, suHour_Text, suHourInput_InputField, suMinute_Text,
             suMinuteInput_InputField, suCycle_Text, suCycleInput_InputField, suHoliday_Text, suHolidayInput_InputField);
-        SUNDAY.week_Layout(textFont, -2.64f, "週日");
+        SUNDAY.week_Layout(textFont, -3.04f, "週日");
         suCycleInput_InputField.enabled = false;
 
         WORKOVERTIME = new WeekInterface(workOvertimeManage_RectTransform, workOvertimeMessage_Text, workOvertimeHour_Text,
             workOvertimeHourInput_InputField, workOvertimeMinute_Text, workOvertimeMinuteInput_InputField);
 
-        WORKOVERTIME.workOvertime_Layout(textFont, -3.28f, "加班");
+        WORKOVERTIME.workOvertime_Layout(textFont, -3.68f, "加班");
     }
 
     // 說明內容

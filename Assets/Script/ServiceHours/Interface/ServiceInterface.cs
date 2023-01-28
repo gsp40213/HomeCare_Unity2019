@@ -55,13 +55,13 @@ public class ServiceInterface
         breaGroudArea.transform.parent = breakGroud.transform;
 
         breakGraoudAreaSetting = new ImageSetting(breaGroudArea, 1f, 1.4f, 1.6f, 0.8f);
-        breakGraoudAreaSetting.function(null, false, true, manage);
+        breakGraoudAreaSetting.scrollRectImage(null, false, true, manage);
 
         // breaGroudArea 物件底下子物件
         manage.transform.parent = breaGroudArea.transform;
 
         manageSetting = new AreaSetting(manage, Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1));
-        manageSetting.defaultFunction(new Vector2(0, Screen.height / 2 * 0.8f));
+        manageSetting.defaultFunction(new Vector2(0, Screen.height / 2 * 0.75f));
     }
 
     // 服務次數
@@ -82,8 +82,8 @@ public class ServiceInterface
         manageSetting = new AreaSetting(manage, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
         manageSetting.defaultFunction(Vector2.zero);
 
-        titleMessageSetting = new TextSetting(titleMessage, 0.6f, pointY, 0.58f, 0.1f); 
-        titleMessageSetting.function(font, FontStyle.Normal, title, TextAnchor.MiddleLeft, Color.green, 7);
+        titleMessageSetting = new TextSetting(titleMessage, 0.6f, pointY, 0.58f, 0.1f, title, 7); 
+        titleMessageSetting.style(font, FontStyle.Normal, TextAnchor.MiddleLeft, Color.green);
 
         hourSetting = new InterfaceSetting(hour, hourInput, font);
         hourSetting.dateWeekfunction("小時", pointY - 0.16f, Color.red);

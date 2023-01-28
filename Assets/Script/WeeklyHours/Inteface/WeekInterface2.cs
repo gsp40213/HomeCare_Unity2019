@@ -93,23 +93,24 @@ public class WeekInterface
 
         // 說明區域背景
         instructionBreakGroudSetting = new ImageSetting(instructionBreakGroud, 1, 1.6f, 1.6f, 0.41f);
-        instructionBreakGroudSetting.function(null, false, true, instructionMessage.rectTransform);
+        instructionBreakGroudSetting.scrollRectImage(null, false, true, instructionMessage.rectTransform);
 
         //instructionBreakGroud 物件底下子物件
         instructionMessage.transform.parent = instructionBreakGroud.transform;
 
-        instructionMessageSetting = new TextSetting(instructionMessage, 5f, 0, 0, 0.12f);
-        instructionMessageSetting.function(7, instruction, Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1));
+        instructionMessageSetting = new TextSetting(instructionMessage, 5f, 0, 0, 0.12f, instruction, 7);
+        instructionMessageSetting.areaText(Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1));
 
         // 週次區域背景
         weekDayBreakGroudSetting = new ImageSetting(weekDayBreakGroud, 1f, 0.9f, 1.6f, 0.8f);
-        weekDayBreakGroudSetting.function(null, false, true, weekArea);
+        weekDayBreakGroudSetting.scrollRectImage(null, false, true, weekArea);
 
         // weekDayBreakGroud 物件底下子物件
         weekArea.transform.parent = weekDayBreakGroud.transform;
 
+        // 調整週次後面背景滑動
         weekAreaSetting = new AreaSetting(weekArea, Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1));
-        weekAreaSetting.defaultFunction(new Vector2(0, Screen.height / 2 * 4.1f));
+        weekAreaSetting.defaultFunction(new Vector2(0, Screen.height / 2 * 4.2f));
     }
 
     // --------
@@ -117,8 +118,8 @@ public class WeekInterface
     // 週次.年.月 介面
     public void system_Layout(Font font, float pointX, string systemMessage)
     {
-        systemSetting = new TextSetting(systemText, pointX, 1.89f, 1f, 0.13f);
-        systemSetting.function(font, FontStyle.Normal, systemMessage, TextAnchor.MiddleLeft, Color.green, 7);
+        systemSetting = new TextSetting(systemText, pointX, 1.89f, 1f, 0.13f, systemMessage, 7);
+        systemSetting.style(font, FontStyle.Normal, TextAnchor.MiddleLeft, Color.green);
 
         yearSetting = new InterfaceSetting(yearText, yearInput, font);
         yearSetting.systemAndYear("年", pointX + 0.88f, Color.red);
@@ -156,8 +157,8 @@ public class WeekInterface
         holidayText.transform.parent = manage.transform;
         holidayInput.transform.parent = manage.transform;
 
-        dateMessageSetting = new TextSetting(dateText, 0.5f, pointY, 0.3f, 0.1f);
-        dateMessageSetting.function(font, FontStyle.Normal, dateMessage, TextAnchor.MiddleLeft, Color.blue, 7);
+        dateMessageSetting = new TextSetting(dateText, 0.5f, pointY, 0.3f, 0.1f, dateMessage, 7);
+        dateMessageSetting.style(font, FontStyle.Normal, TextAnchor.MiddleLeft, Color.blue);
 
         // 小時
         hourSetting = new InterfaceSetting(hourText, hourInput, font);
@@ -183,8 +184,8 @@ public class WeekInterface
             new Vector2(0.5f, 0.5f));
         manageSetting.defaultFunction(Vector2.zero);
 
-        dateMessageSetting = new TextSetting(dateText, 0.5f, pointY, 0.3f, 0.1f);
-        dateMessageSetting.function(font, FontStyle.Normal, "加班", TextAnchor.MiddleLeft, Color.blue, 7);
+        dateMessageSetting = new TextSetting(dateText, 0.5f, pointY, 0.3f, 0.1f, "加班", 7);
+        dateMessageSetting.style(font, FontStyle.Normal, TextAnchor.MiddleLeft, Color.blue);
 
         // 小時
         hourSetting = new InterfaceSetting(hourText, hourInput, font);

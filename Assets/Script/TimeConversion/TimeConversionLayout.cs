@@ -63,47 +63,47 @@ public class TimeConversionLayout : MonoBehaviour
         HOUR_MINUTE.hourAndminute(textFont, 1.27f);
 
 
-        result = new TextSetting(result_Text, 1.1f, 1f, 1.42f, 0.1f);
-        result.function(textFont, FontStyle.Normal, "結果", TextAnchor.MiddleLeft, Color.green, 7);
+        result = new TextSetting(result_Text, 1.1f, 1f, 1.42f, 0.1f, "結果", 7);
+        result.style(textFont, FontStyle.Normal, TextAnchor.MiddleLeft, Color.green);
 
         // 計算機
-        calculatorSetting = new TextSetting(calculator_Text, 0.9f, 0.76f, 1.2f, 0.1f);
-        calculatorSetting.function(textFont, FontStyle.Normal, "計算機", TextAnchor.MiddleLeft, Color.red, 7);
+        calculatorSetting = new TextSetting(calculator_Text, 0.9f, 0.76f, 1.2f, 0.1f, "計算機", 7);
+        calculatorSetting.style(textFont, FontStyle.Normal, TextAnchor.MiddleLeft, Color.red);
         calculatoLayoutSetting = new TimeConversionInterface(calculatorBreakGroud_Image, calculatorArea_RectTransform, canculatorProces,
             canculatorResult);
         // 計算滑輪高度調整
         calculatoLayoutSetting.calculayoutSetting(textFont, 0.39f, 11);
 
-        // 顯示介面
-        canculatorProcesSetting = new TextSetting(canculatorProces, 0.98f, 0.7f, 1.5f, 0.2f);
-        canculatorResultSetting = new TextSetting(canculatorResult, 1f, 0.76f, 1.5f, 0.1f);
+        // 顯示介面        
+        canculatorResultSetting = new TextSetting(canculatorResult, 1f, 0.52f, 1.5f, 0.1f, "", 7);
+        canculatorProcesSetting = new TextSetting(canculatorProces, 1f, 0.4f, 1.5f, 0.2f, "", 7);
 
-         // 計算機按鈕
-         calculatoLayoutButtonHo1 = new TimeConversionInterface(one_Button, two_Button, three_Button, add_Button);
-        calculatoLayoutButtonHo1.calculatorHorizontalBtns(-0.1f, textFont, "1", "2", "3", "+", 
+        // 計算機按鈕
+        calculatoLayoutButtonHo1 = new TimeConversionInterface(one_Button, two_Button, three_Button, add_Button);
+        calculatoLayoutButtonHo1.calculatorHorizontalBtns(-0.45f, textFont, "1", "2", "3", "+", 
             new OnClickView().oneClick, new OnClickView().twoClick, new OnClickView().threeClick, new OnClickView().addClick);
         calculatoLayoutButtonHo2 = new TimeConversionInterface(four_Button, five_Button, six_Button, reduce_Button);
-        calculatoLayoutButtonHo2.calculatorHorizontalBtns(-0.3f, textFont, "4", "5", "6", "-", 
+        calculatoLayoutButtonHo2.calculatorHorizontalBtns(-0.65f, textFont, "4", "5", "6", "-", 
             new OnClickView().fourClick, new OnClickView().fiveClick, new OnClickView().sixClick, new OnClickView().reduceClick);
         calculatoLayoutButtonHo3 = new TimeConversionInterface(seven_Button, eight_Butotn, nine_Button, take_Button);
-        calculatoLayoutButtonHo3.calculatorHorizontalBtns(-0.5f, textFont, "7", "8", "9", "×",
+        calculatoLayoutButtonHo3.calculatorHorizontalBtns(-0.85f, textFont, "7", "8", "9", "×",
             new OnClickView().sevenClick, new OnClickView().eightClick, new OnClickView().nineClick, new OnClickView().takeClick);
         calculatoLayoutButtonHo4 = new TimeConversionInterface(zero_Button, drop_Button, equal_Buttin, remove_Button);
-        calculatoLayoutButtonHo4.calculatorHorizontalBtns(-0.7f, textFont, "0", "C", "=", "÷", 
+        calculatoLayoutButtonHo4.calculatorHorizontalBtns(-1.05f, textFont, "0", "C", "=", "÷", 
             new OnClickView().zeroClick, new OnClickView().chearClick, new OnClickView().equalClick, new OnClickView().removeClick);
 
-        systemMessage = new TextSetting(systemMessage_Text, 0.78f, 1.87f, 1.2f, 0.13f);
-        systemMessage.function(textFont, FontStyle.Normal, "時間換算", TextAnchor.MiddleLeft, Color.red, 7);
+        systemMessage = new TextSetting(systemMessage_Text, 0.78f, 1.87f, 1.2f, 0.13f, "時間換算", 7);
+        systemMessage.style(textFont, FontStyle.Normal, TextAnchor.MiddleLeft, Color.red);
 
         returnbtn = new ButtonSetting(return_btn, 1.5f, 0.1f, 0.6f, 0.15f, new ReturnOnClick().onClick);
-        returnbtn.function(textFont, FontStyle.Normal, "上一頁", TextAnchor.MiddleCenter, Color.black, 7);
+        returnbtn.textStype(textFont, FontStyle.Normal, "上一頁", TextAnchor.MiddleCenter, Color.black, 7, 0);
     }
 
     private void FixedUpdate()
     {
         try
         {
-            result.function(textFont, FontStyle.Normal, TimeConversionCalculation.RESULT(), TextAnchor.MiddleLeft, Color.green, 7);
+            result.messageText(textFont, FontStyle.Normal, TextAnchor.MiddleLeft, Color.green, TimeConversionCalculation.RESULT());
             canculatorProcesSetting.setMessage(OnClickView.RESULT_PROCESS());
 
             canculatorResultSetting.setMessage(OnClickView.RESULT_());

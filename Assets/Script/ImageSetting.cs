@@ -7,18 +7,18 @@ public class ImageSetting : UIOBJ.Image_Setting
 {
     public ImageSetting(Image image, float pointX, float pointY, float sizeX, float sizeY) :
         base(image, pointX, pointY, sizeX, sizeY)
-    { }
+    {
+        image.rectTransform.position = new Vector2(Screen.width / 2 * pointX, Screen.height / 2 * pointY);
+        image.rectTransform.sizeDelta = new Vector2(Screen.width / 2 * sizeX, Screen.height / 2 * sizeY);
+    }
     public override Image function(Sprite sprite)
     {
         image.sprite = sprite;
 
-        image.rectTransform.position = new Vector2(Screen.width / 2 * pointX, Screen.height / 2 * pointY);
-        image.rectTransform.sizeDelta = new Vector2(Screen.width / 2 * sizeX, Screen.height / 2 * sizeY);
-
         return image;
     }
 
-    public override Image function(Sprite sprite, bool horizontal, bool vertical, RectTransform content)
+    public override Image scrollRectImage(Sprite sprite, bool horizontal, bool vertical, RectTransform content)
     {
 
         image.sprite = sprite;

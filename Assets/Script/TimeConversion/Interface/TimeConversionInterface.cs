@@ -64,34 +64,34 @@ public class TimeConversionInterface
         UnityAction unityAction1, UnityAction unityAction2, UnityAction unityAction3, UnityAction unityAction4)
     {
         button1Setting = new ButtonSetting(button1, 0.4f, 0.7f + pointY, 0.3f, 0.15f, unityAction1);
-        button1Setting.function(font, FontStyle.Normal, btnStr1, TextAnchor.MiddleCenter, Color.black, 7);
+        button1Setting.textStype(font, FontStyle.Normal, btnStr1, TextAnchor.MiddleCenter, Color.black, 7, 0);
 
         button2Setting = new ButtonSetting(button2, 0.8f, 0.7f + pointY, 0.3f, 0.15f, unityAction2);
-        button2Setting.function(font, FontStyle.Normal, btnStr2, TextAnchor.MiddleCenter, Color.black, 7);
+        button2Setting.textStype(font, FontStyle.Normal, btnStr2, TextAnchor.MiddleCenter, Color.black, 7, 0);
 
         button3Setting = new ButtonSetting(button3, 1.2f, 0.7f + pointY, 0.3f, 0.15f, unityAction3);
-        button3Setting.function(font, FontStyle.Normal, btnStr3, TextAnchor.MiddleCenter, Color.black, 7);
+        button3Setting.textStype(font, FontStyle.Normal, btnStr3, TextAnchor.MiddleCenter, Color.black, 7, 0);
 
         button4Setting = new ButtonSetting(button4, 1.6f, 0.7f + pointY, 0.3f, 0.15f, unityAction4);
-        button4Setting.function(font, FontStyle.Normal, btnStr4, TextAnchor.MiddleCenter, Color.black, 7);
+        button4Setting.textStype(font, FontStyle.Normal, btnStr4, TextAnchor.MiddleCenter, Color.black, 7, 0);
     }
 
     // 計算機介面
     public void calculayoutSetting(Font font, float povitY, int textSize)
     {
         breakGroudSetting = new ImageSetting(breakGroud, 1f, 0.6f, 1.6f, 0.66f);
-        breakGroudSetting.function(null, false, true, calculatorArea);
+        breakGroudSetting.scrollRectImage(null, false, true, calculatorArea);
 
         calculatorAreaSetting = new AreaSetting(calculatorArea, Vector2.zero, new Vector2(1, 1), new Vector2(0.5f, 1f));
         calculatorAreaSetting.defaultFunction(new Vector2(1, Screen.height / 2 * povitY));
 
         // 顯示過程
-        calculatorProcessSetting = new TextSetting(calculatorProcess, 1f, 0.86f, 1.5f, 0.1f);
-        calculatorProcessSetting.function(font, FontStyle.Normal, "", TextAnchor.MiddleLeft, Color.black, 7);
+        calculatorProcessSetting = new TextSetting(calculatorProcess, 1f, 0.86f, 1.5f, 0.1f, "", 7);
+        calculatorProcessSetting.style(font, FontStyle.Normal, TextAnchor.MiddleLeft, Color.black);
 
         // 顯示計算後結果
-        calculatorResultSetting = new TextSetting(calculatorResult, 1f, 0.76f, 1.5f, 0.1f);
-        calculatorResultSetting.function(font, FontStyle.Normal, "", TextAnchor.MiddleLeft, Color.black, 7);
+        calculatorResultSetting = new TextSetting(calculatorResult, 1f, 0.76f, 1.5f, 0.1f, "", 7);
+        calculatorResultSetting.style(font, FontStyle.Normal, TextAnchor.MiddleLeft, Color.black);
 
     }
 
@@ -102,13 +102,13 @@ public class TimeConversionInterface
         breakGroudSetting.function(null);
 
         instructionBreakGroudSetting = new ImageSetting(instructionBreakGroud, 1f, 1.59f, 1.6f, 0.42f);
-        instructionBreakGroudSetting.function(null, false, true, instruction.rectTransform);
+        instructionBreakGroudSetting.scrollRectImage(null, false, true, instruction.rectTransform);
 
         // instructionBreakGroud 物件底下子物件
         instruction.transform.parent = instructionBreakGroud.transform;
 
-        instructionSetting = new TextSetting(instruction, 0, 0, 0, 0.74f);
-        instructionSetting.function(7, instructionMessage, new Vector2(0, 0f), new Vector2(1, 1), new Vector2(0.5f, 1f));
+        instructionSetting = new TextSetting(instruction, 0, 0, 0, 0.74f, instructionMessage, 7);
+        instructionSetting.areaText(new Vector2(0, 0f), new Vector2(1, 1), new Vector2(0.5f, 1f));
     }
 
     //　小時與分鐘

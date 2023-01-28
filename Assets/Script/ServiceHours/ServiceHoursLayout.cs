@@ -59,22 +59,22 @@ public class ServiceHoursLayout : MonoBehaviour
         // 開始服務
         START_SERVICE = new ServiceInterface(startManage__RectTransform, startMessage_text, startHour_text, 
             startHourInput_InputField, startMinute_text, startMinuteInput_inputField);
-        START_SERVICE.serverTime_Layout(textFont, 1.6f, "開始服務");
+        START_SERVICE.serverTime_Layout(textFont, 1.25f, "開始服務");
 
         // 結束服務
         END_SERVICE = new ServiceInterface(endManage__RectTransform, endMessage_text, endHourMessage_Text,
             endHourInput_InputField, endMinuteMessage_Text, endMinuteInput_InputField);
-        END_SERVICE.serverTime_Layout(textFont, 1, "結束服務");
+        END_SERVICE.serverTime_Layout(textFont, 0.65f, "結束服務");
 
         // 服務次數
         SERVICE_VALUE = new ServiceInterface(serivcesManage__RectTransform, serivcesMessage_Text, serivcesInput_InputField);
-        SERVICE_VALUE.serviceTime_Layout(textFont, 0.48f);
+        SERVICE_VALUE.serviceTime_Layout(textFont, 0.12f);
 
-        result = new TextSetting(result_Text, 1f, 0.7f, 1.5f, 0.5f);
-        result.function(textFont, FontStyle.Normal, "結果", TextAnchor.MiddleLeft, Color.green, 7);
+        result = new TextSetting(result_Text, 1f, 0.7f, 1.5f, 0.5f, "結果", 7);
+        result.style(textFont, FontStyle.Normal, TextAnchor.MiddleLeft, Color.green);
 
         returnbtn = new ButtonSetting(return_btn, 1.5f, 0.1f, 0.6f, 0.15f, new ReturnOnClick().onClick);
-        returnbtn.function(textFont, FontStyle.Normal, "上一頁", TextAnchor.MiddleCenter, Color.black, 7);
+        returnbtn.textStype(textFont, FontStyle.Normal, "上一頁", TextAnchor.MiddleCenter, Color.black, 7, 0);
     }
 
     public float sizeX, sizeY;
@@ -83,7 +83,7 @@ public class ServiceHoursLayout : MonoBehaviour
     {
         try
         {
-            result.function(textFont, FontStyle.Normal, Calculate.RESULT(), TextAnchor.MiddleLeft, Color.green, 7);
+            result.messageText(textFont, FontStyle.Normal, TextAnchor.MiddleLeft, Color.green, Calculate.RESULT());
         }
         catch { }
     }

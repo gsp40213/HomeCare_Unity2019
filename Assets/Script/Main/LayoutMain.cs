@@ -34,11 +34,11 @@ public class LayoutMain : MonoBehaviour
     public Font textFont;
     private void Start()
     {
-        systemMessage = new TextSetting(systemMessage_text, 1f, 1.8f, 1.5f, 0.3f);
-        systemMessage.function(textFont, FontStyle.Normal, "居家服務小工具", TextAnchor.UpperLeft, Color.red, 5);  
+        systemMessage = new TextSetting(systemMessage_text, 1f, 1.8f, 1.5f, 0.3f, "居家服務小工具", 5);
+        systemMessage.style(textFont, FontStyle.Normal, TextAnchor.UpperLeft, Color.red);  
 
         quit = new ButtonSetting(quit_btn, 1.4f, 0.1f, 0.8f, 0.15f, new QuitIOnClick().onClick);
-        quit.function(textFont, FontStyle.Normal, "離開", TextAnchor.MiddleCenter, Color.black, 7);
+        quit.textStype(textFont, FontStyle.Normal, "離開", TextAnchor.MiddleCenter, Color.black, 7, 0);
 
         // 按鈕區域
         buttonAreaSetting = new MainInterface(buttonArea_Image, area_RectTransform);
@@ -53,20 +53,20 @@ public class LayoutMain : MonoBehaviour
 
 
         serviceHours = new ButtonSetting(serviceHours_btn, 1f, 1.58f, 1.1f, 0.15f, new ServiceHoursOnClick().onClick);
-        serviceHours.function(textFont, FontStyle.Normal, "服務時間計算", TextAnchor.MiddleCenter, Color.black, 5);
+        serviceHours.textStype(textFont, FontStyle.Normal, "服務時間計算", TextAnchor.MiddleCenter, Color.black, 5, 0);
 
         timeConversion = new ButtonSetting(timeConversion_btn, 1f, 1.3f, 1.1f, 0.15f, new TimeConversionOnClick().onClick);
-        timeConversion.function(textFont, FontStyle.Normal, "時間換算", TextAnchor.MiddleCenter, Color.black, 5);
+        timeConversion.textStype(textFont, FontStyle.Normal, "時間換算", TextAnchor.MiddleCenter, Color.black, 5, 0);
 
         weeklyHourcalculatio = new ButtonSetting(weeklyHourcalculation_btn, 1f, 1.02f, 1.1f, 0.15f, new WeeklyHourcalculatioOnClick().onClick);
-        weeklyHourcalculatio.function(textFont, FontStyle.Normal, "週次時數", TextAnchor.MiddleCenter, Color.black, 5);
+        weeklyHourcalculatio.textStype(textFont, FontStyle.Normal, "週次時數", TextAnchor.MiddleCenter, Color.black, 5, 0);
 
         kilometerCalculation = new ButtonSetting(kilometerCalculation_brn, 1f, 0.74f, 1.1f, 0.15f, new KilometerCalculationOnClick().onClick);
-        kilometerCalculation.function(textFont, FontStyle.Normal, "公里數估算", TextAnchor.MiddleCenter, Color.black, 5);
+        kilometerCalculation.textStype(textFont, FontStyle.Normal, "公里數估算", TextAnchor.MiddleCenter, Color.black, 5, 0);
         kilometerCalculation.setInteracTable(false);
 
         salaryCalculation = new ButtonSetting(salaryCalculation_btn, 1f, 0.46f, 1.1f, 0.15f, new SalaryCalculationOnClick().onClick);
-        salaryCalculation.function(textFont, FontStyle.Normal, "薪資估算", TextAnchor.MiddleCenter, Color.black, 5);
+        salaryCalculation.textStype(textFont, FontStyle.Normal, "薪資估算", TextAnchor.MiddleCenter, Color.black, 5, 0);
         salaryCalculation.setInteracTable(false);
     }
 }

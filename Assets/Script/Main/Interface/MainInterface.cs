@@ -20,7 +20,7 @@ public class MainInterface
     public void buttonArea_Layout()
     {
         buttonAreaSetting = new ImageSetting(buttonArea, 1f, 1f, 1.6f, 1.6f);
-        buttonAreaSetting.function(null, false, true, area);
+        buttonAreaSetting.scrollRectImage(null, false, true, area);
 
         // buttonArea 物件底下子物件
         area.transform.parent = buttonArea.transform;
