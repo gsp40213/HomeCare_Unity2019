@@ -22,6 +22,7 @@ public class OnClickView : CalculatoOnClck
         RESULT = "";
         VALUE = null;
         PROCESS_NUMBER = "";
+        A = 0;
     }
 
     // 計算過程
@@ -45,6 +46,7 @@ public class OnClickView : CalculatoOnClck
         RESULT = "";
         VALUE = null;
         PROCESS_NUMBER = "";
+        A = 0;
     }
 
     public void eightClick()
@@ -135,10 +137,17 @@ public class OnClickView : CalculatoOnClck
         chear("+");
         CHEAR_STATUS = 1;
 
-        if (RESULT == null || RESULT == "")
-            A = double.Parse(VALUE);
+        // 被加數清除
+        PROCESS_NUMBER = "";
+        
+        if (RESULT == null || RESULT == "")       
+            A += double.Parse(VALUE);           
+        
         else
+        {
             A = double.Parse(RESULT);
+            PROCESS = RESULT + CHEAR_MESSAGE + PROCESS_NUMBER;   
+        }
 
         VALUE = "0";
     }
@@ -148,10 +157,18 @@ public class OnClickView : CalculatoOnClck
     {
         chear("-");
         CHEAR_STATUS = 2;
-
-        if (RESULT == null || RESULT == "")
-            A = double.Parse(VALUE);
-        else A = double.Parse(RESULT);
+        
+        // 被減數 清除
+        PROCESS_NUMBER = "";
+    
+        if (RESULT == null || RESULT == "")        
+            A = double.Parse(PROCESS_NUMBER);                        
+        
+        else
+        {
+            A = double.Parse(RESULT);
+            PROCESS = RESULT + CHEAR_MESSAGE + PROCESS_NUMBER;
+        }
 
         VALUE = "0";
     }
@@ -162,9 +179,16 @@ public class OnClickView : CalculatoOnClck
         chear("×");
         CHEAR_STATUS = 3;
 
+        // 被乘數清除
+        PROCESS_NUMBER = "";
+
         if (RESULT == null || RESULT == "")
             A = double.Parse(VALUE);
-        else A = double.Parse(RESULT);
+        else
+        {
+            A = double.Parse(RESULT);
+            PROCESS = RESULT + CHEAR_MESSAGE + PROCESS_NUMBER;
+        }
 
         VALUE = "0";
     }
@@ -175,9 +199,16 @@ public class OnClickView : CalculatoOnClck
         chear("÷");
         CHEAR_STATUS = 4;
 
+        // 被除數清除
+        PROCESS_NUMBER = "";
+
         if (RESULT == null || RESULT == "")
             A = double.Parse(VALUE);
-        else A = double.Parse(RESULT);
+        else
+        {
+            A = double.Parse(RESULT);
+            PROCESS = RESULT + CHEAR_MESSAGE + PROCESS_NUMBER;
+        }
 
         VALUE = "0";
     }
@@ -188,8 +219,8 @@ public class OnClickView : CalculatoOnClck
         if (CHEAR_STATUS == 1)
             SUM = A + double.Parse(VALUE);
 
-        if (CHEAR_STATUS == 2)
-            SUM = A - double.Parse(VALUE);
+        if (CHEAR_STATUS == 2) 
+            SUM = A - double.Parse(VALUE);          
 
         if (CHEAR_STATUS == 3)
             SUM = A * double.Parse(VALUE);
